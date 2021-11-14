@@ -1,0 +1,179 @@
+body {
+  font-family: Arial, Helvetica, sans-serif; 
+  background-color: #000;
+  color: beige;
+  margin: 0;
+  padding: 0;
+}
+
+#content {
+  text-align: center;
+  padding: 8px;
+}
+
+#image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+}
+
+#image-gallery > * {
+  flex: 1 1 24%;
+}
+
+#single-image {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, .8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-100%);
+  transition: transform 250ms;
+  padding: 50px;
+}
+
+#selected-image {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+#scroll-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  padding: 10px;
+  border-radius: 0;
+  color: beige;
+  background-color:rgba(0, 0, 0, 0.8) ;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+#scroll-to-top:hover {
+  background-color: #000;
+  box-shadow: none;
+}
+
+figure {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+figcaption {
+  position: absolute;
+  font-size: .7em;
+  color: beige;
+  bottom: 5px;
+  left: 5px;
+}
+
+figcaption::before {
+  content: '@';
+}
+
+.gallery-img {
+  background-color: #333;
+  width: 100%;
+  height: auto;
+  object-fit:cover;
+  cursor: pointer;
+  aspect-ratio: 3 / 2;
+  transition: transform 250ms;
+}
+
+.gallery-img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px #333;
+}
+
+.btn-more {
+  font-size: 16px;
+  margin: 15px auto;
+  cursor: pointer;
+  background-color: beige;
+  padding: 15px;
+  border: none;
+  outline: none;
+}
+
+.btn-more:hover {
+  background-color: rgb(194, 194, 173);
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.display-none {
+  display: none !important;
+}
+
+/*** CSS Loader Start ***/
+.lds-ring {
+  display: block;
+  position: relative;
+  margin: 50px auto;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid beige;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: beige transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/*** CSS Loader End ***/
+
+/*** Media queries ***/
+@media (max-width: 500px) {
+  #image-gallery > * {
+    flex: 1 1 49%;
+  }
+
+  .gallery-img {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+@media (min-width: 1900px) {
+  #image-gallery > * {
+    flex: 1 1 16%;
+  }
+
+  .gallery-img {
+    aspect-ratio: 16 / 9;
+  }
+}
